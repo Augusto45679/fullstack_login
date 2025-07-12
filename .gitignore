@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 /env
+=======
+/env
+/frontend/.next
+/frontend/node_modules
+>>>>>>> 4dab751 (asd)
