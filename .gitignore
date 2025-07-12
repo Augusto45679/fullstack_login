@@ -1,3 +1,11 @@
 /env
+/backendlog/__pycache__/
+/backendlog/*.pyc
+/backendlog/db.sqlite3
+/backendlog/media/
+/backendlog/staticfiles/
+/backendlog/.env
+/frontend/dist/
+/frontend/.env
 /frontend/.next
 /frontend/node_modules
