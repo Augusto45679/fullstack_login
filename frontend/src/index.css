@@ -1,5 +1,6 @@
-@import "tailwindcss";
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* === BASE LAYER: Reset, fuentes y color del tema === */
 @layer base {
