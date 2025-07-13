@@ -1,11 +1,64 @@
+# === BACKEND: Python / Django ===
 /env
 /backendlog/__pycache__/
 /backendlog/*.pyc
 /backendlog/db.sqlite3
 /backendlog/media/
 /backendlog/staticfiles/
-/backendlog/.env
+/backendlog/.
+*.pyc
+__pycache__/
+*.sqlite3
+*.db
+.env
+*.log
+
+# === FRONTEND: Node / Vite / React ===
 /frontend/dist/
 /frontend/.env
-/frontend/.next
 /frontend/node_modules
+
+# Frontend build and dependency files
+/frontend/build/
+/frontend/.cache/
+/frontend/.parcel-cache/
+/frontend/.turbo/
+/frontend/.eslintcache
+/frontend/package-lock.json
+/frontend/yarn.lock
+/frontend/pnpm-lock.yaml
+/frontend/.env.local
+/frontend/.env.production
+/frontend/.env.development
+/frontend/.env.test
+/frontend/.storybook/
+/frontend/coverage/
+/frontend/.firebase/
+/frontend/.sass-cache/
+/frontend/.nuxt/
+/frontend/.expo/
+/frontend/.idea/
+/frontend/.
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
