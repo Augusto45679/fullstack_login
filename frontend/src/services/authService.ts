@@ -1,3 +1,4 @@
+import { data } from "react-router-dom"
 import type { AuthResponse, LoginCredentials, RegisterCredentials, User } from "../types/auth"
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000/api/"
@@ -32,10 +33,12 @@ class AuthService {
     })
   }
 
-  async register(credentials: RegisterCredentials): Promise<AuthResponse> {
+  async register(formData: RegisterCredentials): Promise<AuthResponse> {
+    const { confirmPassword, ...dataToSend } = formData;
+
     return this.request<AuthResponse>("register/", {
       method: "POST",
-      body: JSON.stringify(credentials),
+      body: JSON.stringify(dataToSend),
     })
   }
 
