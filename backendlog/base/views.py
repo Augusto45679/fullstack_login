@@ -82,7 +82,7 @@ class CustomRefreshTokenView(TokenRefreshView): # Custom view to handle JWT toke
         
 
 @api_view(['POST'])
-def logout(request):
+def logout(request): #logout 
     try:
         res = Response()
         res.data = {'success':True}
@@ -110,7 +110,7 @@ def register(request): #user registration
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_notes(request):
+def get_notes(request): #para probar permisos
     user = request.user
     notes = Note.objects.filter(owner=user)
     serializer = NoteSerializer(notes, many=True)
