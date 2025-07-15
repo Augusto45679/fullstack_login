@@ -1,6 +1,6 @@
 import type { AuthResponse, LoginCredentials, RegisterCredentials, User } from "../types/auth"
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3001/api"
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000/api/"
 
 class AuthService {
   private async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
@@ -26,32 +26,32 @@ class AuthService {
   }
 
   async login(credentials: LoginCredentials): Promise<AuthResponse> {
-    return this.request<AuthResponse>("/auth/login", {
+    return this.request<AuthResponse>("token/", {
       method: "POST",
       body: JSON.stringify(credentials),
     })
   }
 
   async register(credentials: RegisterCredentials): Promise<AuthResponse> {
-    return this.request<AuthResponse>("/auth/register", {
+    return this.request<AuthResponse>("register/", {
       method: "POST",
       body: JSON.stringify(credentials),
     })
   }
 
-  async loginWithGoogle(): Promise<AuthResponse> {
-    // This would typically redirect to Google OAuth or open a popup
-    // For now, we'll simulate the flow
-    window.location.href = `${API_BASE_URL}/auth/google`
-    return Promise.reject(new Error("Redirecting to Google..."))
-  }
+  // async loginWithGoogle(): Promise<AuthResponse> {
+  //   // This would typically redirect to Google OAuth or open a popup
+  //   // For now, we'll simulate the flow
+  //   window.location.href = `${API_BASE_URL}/auth/google`
+  //   return Promise.reject(new Error("Redirecting to Google..."))
+  // }
 
   async getCurrentUser(): Promise<User> {
-    return this.request<User>("/auth/me")
+    return this.request<User>("authenticated/me")
   }
 
   async logout(): Promise<void> {
-    return this.request<void>("/auth/logout", {
+    return this.request<void>("logout/", {
       method: "POST",
     })
   }

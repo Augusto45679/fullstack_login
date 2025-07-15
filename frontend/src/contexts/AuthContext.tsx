@@ -9,7 +9,7 @@ interface AuthContextType {
   loading: boolean
   login: (credentials: LoginCredentials) => Promise<void>
   register: (credentials: RegisterCredentials) => Promise<void>
-  loginWithGoogle: () => Promise<void>
+  //loginWithGoogle: () => Promise<void>
   logout: () => void
   error: string | null
 }
@@ -51,8 +51,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setError(null)
       setLoading(true)
       const response = await authService.login(credentials)
-      localStorage.setItem("token", response.token)
-      setUser(response.user)
+      localStorage.setItem("token", response.access);
+      const user = await authService.getCurrentUser();
+      setUser(user);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error al iniciar sesión")
       throw err
@@ -66,8 +67,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setError(null)
       setLoading(true)
       const response = await authService.register(credentials)
-      localStorage.setItem("token", response.token)
-      setUser(response.user)
+      localStorage.setItem("token", response.access)
+       const user = await authService.getCurrentUser();
+      setUser(user)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error al registrarse")
       throw err
@@ -76,20 +78,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
-  const loginWithGoogle = async () => {
-    try {
-      setError(null)
-      setLoading(true)
-      const response = await authService.loginWithGoogle()
-      localStorage.setItem("token", response.token)
-      setUser(response.user)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Error con Google")
-      throw err
-    } finally {
-      setLoading(false)
-    }
-  }
+  // const loginWithGoogle = async () => {
+  //   try {
+  //     setError(null)
+  //     setLoading(true)
+  //     const response = await authService.loginWithGoogle()
+  //     localStorage.setItem("token", response.token)
+  //     setUser(response.user)
+  //   } catch (err) {
+  //     setError(err instanceof Error ? err.message : "Error con Google")
+  //     throw err
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
 
   const logout = () => {
     localStorage.removeItem("token")
@@ -102,7 +104,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     loading,
     login,
     register,
-    loginWithGoogle,
+    //loginWithGoogle,
     logout,
     error,
   }

@@ -8,7 +8,7 @@ import type { LoginCredentials } from "../types/auth"
 import "./AuthForms.css"
 
 const LoginForm: React.FC = () => {
-  const { login, loginWithGoogle, error, loading } = useAuth()
+  const { login, error, loading } = useAuth()
   const [formData, setFormData] = useState<LoginCredentials>({
     email: "",
     password: "",
@@ -51,13 +51,13 @@ const LoginForm: React.FC = () => {
     }
   }
 
-  const handleGoogleLogin = async () => {
-    try {
-      await loginWithGoogle()
-    } catch (err) {
-      // El error se maneja en el contexto
-    }
-  }
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     await loginWithGoogle()
+  //   } catch (err) {
+  //     // El error se maneja en el contexto
+  //   }
+  // }
 
   return (
     <div className="auth-container">
@@ -102,7 +102,7 @@ const LoginForm: React.FC = () => {
             {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
           </button>
         </form>
-
+{/* 
         <div className="divider">
           <span>o</span>
         </div>
@@ -127,7 +127,7 @@ const LoginForm: React.FC = () => {
             />
           </svg>
           Continuar con Google
-        </button>
+        </button> */}
 
         <div className="auth-footer">
           <p>

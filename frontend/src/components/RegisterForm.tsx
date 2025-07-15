@@ -8,7 +8,7 @@ import type { RegisterCredentials } from "../types/auth"
 import "./AuthForms.css"
 
 const RegisterForm: React.FC = () => {
-  const { register, loginWithGoogle, error, loading } = useAuth()
+  const { register, error, loading } = useAuth()
   const [formData, setFormData] = useState<RegisterCredentials>({
     name: "",
     email: "",
@@ -65,13 +65,13 @@ const RegisterForm: React.FC = () => {
     }
   }
 
-  const handleGoogleLogin = async () => {
-    try {
-      await loginWithGoogle()
-    } catch (err) {
-      // El error se maneja en el contexto
-    }
-  }
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     await loginWithGoogle()
+  //   } catch (err) {
+  //     // El error se maneja en el contexto
+  //   }
+  // }
 
   return (
     <div className="auth-container">
@@ -149,7 +149,7 @@ const RegisterForm: React.FC = () => {
           <span>o</span>
         </div>
 
-        <button type="button" onClick={handleGoogleLogin} className="auth-button google" disabled={loading}>
+        {/* <button type="button" onClick={handleGoogleLogin} className="auth-button google" disabled={loading}>
           <svg className="google-icon" viewBox="0 0 24 24">
             <path
               fill="#4285F4"
@@ -169,7 +169,7 @@ const RegisterForm: React.FC = () => {
             />
           </svg>
           Continuar con Google
-        </button>
+        </button> */}
 
         <div className="auth-footer">
           <p>

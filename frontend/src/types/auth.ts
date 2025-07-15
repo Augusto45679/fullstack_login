@@ -19,8 +19,8 @@ export interface RegisterCredentials {
 }
 
 export interface AuthResponse {
-  user: User
-  token: string
+  access: string;  // Cambiado de 'token' a 'access'
+  refresh: string;
 }
 
 export interface ApiError {
