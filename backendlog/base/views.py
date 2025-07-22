@@ -115,3 +115,10 @@ def get_notes(request): #para probar permisos
     notes = Note.objects.filter(owner=user)
     serializer = NoteSerializer(notes, many=True)
     return Response(serializer.data)
+
+# def home(request): 
+#     return render(request, 'index.html')  
+
+# def logoutGoogle(request):
+#     logout(request)
+#     return redirect('/') 

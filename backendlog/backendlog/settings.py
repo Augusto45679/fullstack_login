@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+SITE_ID = 1
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,7 +43,24 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_simplejwt',
     'base',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google', # Example provider, add others as needed
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [ 
+            'profile',
+            'email',
+        ],
+        "AUTH_PARAMS": {
+            'access_type': 'online',
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # Middleware for handling CORS
+    'allauth.account.middleware.AccountMiddleware', # Middleware for Django Allauth
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -141,3 +161,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = ( 
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
+    'allauth.account.auth_backends.AuthenticationBackend',  # Django Allauth backend
+)
+
+LOGIN_REDIRECT_URL = '/'  # Redirect URL after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect URL after logout

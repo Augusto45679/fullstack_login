@@ -20,4 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('base.urls')),
+    path('',include('googleauthentication.urls')),  # Include Google authentication URLs
+    path('accounts/', include('allauth.urls')),  
 ]
