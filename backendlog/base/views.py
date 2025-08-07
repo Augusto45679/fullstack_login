@@ -105,7 +105,7 @@ def register(request): #user registration
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
-    return Response(serializer.error)
+    return Response(serializer.errors)
 
 
 @api_view(['GET'])

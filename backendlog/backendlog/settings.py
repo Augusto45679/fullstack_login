@@ -73,9 +73,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Middleware for handling CORS
     'allauth.account.middleware.AccountMiddleware', # Middleware for Django Allauth
 ]
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
